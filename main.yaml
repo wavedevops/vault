@@ -1,0 +1,16 @@
+- name: Read secret from Vault KV v2
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Read secret
+      community.hashi_vault.vault_kv2_get:
+        url: "https://vault.example.com"
+        token: "{{ vault_token }}"
+        engine_mount_point: "expence-dev"
+        path: "my-secret"
+      register: vault_secret
+
+    - name: Show secret
+      debug:
+        var: vault_secret.secret
