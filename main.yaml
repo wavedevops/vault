@@ -11,7 +11,7 @@
         validate_certs: false
         token: "{{ vault_token }}"
         engine_mount_point: "expence-dev"
-        path: "my-secret"
+        path: "backend"
       register: vault_secret
 
     - name: Show secret
