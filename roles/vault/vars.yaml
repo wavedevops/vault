@@ -1,0 +1,1 @@
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=expense-dev/data/backend token={{token}} url=https://172.31.35.13:8200 validate_certs=false') }}"
