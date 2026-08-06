@@ -6,14 +6,11 @@
 
   tasks:
     - name: Read secret
-      community.hashi_vault.vault_kv2_get:
-        url: "https://172.31.35.13:8200"
-        validate_certs: false
-        token: "{{ vault_token }}"
-        engine_mount_point: "expence-dev"
-        path: "backend"
-      register: vault_secret
+      ansible.builtin.set_fact:
+        vault_secret: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/data/hello:value token={{ vault_token }} url=https://172.31.35.13:8200 validate_certs=false') }}"
+      no_log: true
 
     - name: Show secret
-      debug:
-        var: vault_secret.secret
+      ansible.builtin.debug:
+        var: vault_secret
+      no_log: true
