@@ -7,7 +7,8 @@
   tasks:
     - name: Read secret
       community.hashi_vault.vault_kv2_get:
-        url: "http://172.31.35.13:8200"
+        url: "https://172.31.35.13:8200"
+        validate_certs: false
         token: "{{ vault_token }}"
         engine_mount_point: "expence-dev"
         path: "my-secret"
