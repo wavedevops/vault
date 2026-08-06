@@ -1,4 +1,6 @@
 - name: Read secrets
   hosts: localhost
+  connection: local
+  gather_facts: false
   roles:
     - vault
